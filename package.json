@@ -14,11 +14,12 @@
   ],
   "author": "Northwoods Software",
   "dependencies": {
+    "@material-ui/core": "^4.12.4",
     "@types/node": "17.0.25",
     "@types/react": "18.0.5",
     "@types/react-dom": "18.0.1",
     "fs-extra": "^10.1.0",
-    "gojs": "^2.2.7",
+    "gojs": "^2.2.11",
     "gojs-react": "^1.1.1",
     "immer": "^9.0.12",
     "react": "^18.0.0",

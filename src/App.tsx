@@ -8,6 +8,7 @@ import * as React from 'react';
 
 import { DiagramWrapper } from './components/DiagramWrapper';
 import { SelectionInspector } from './components/SelectionInspector';
+import { Drawer } from "@material-ui/core";
 
 import './App.css';
 
@@ -22,6 +23,7 @@ interface AppState {
   modelData: go.ObjectData;
   selectedData: go.ObjectData | null;
   skipsDiagramUpdate: boolean;
+  drawerOpen: boolean;
 }
 
 class App extends React.Component<{}, AppState> {
@@ -36,20 +38,21 @@ class App extends React.Component<{}, AppState> {
         { key: 0, text: 'Alpha', color: 'lightblue', loc: '0 0' },
         { key: 1, text: 'Beta', color: 'orange', loc: '150 0' },
         { key: 2, text: 'Gamma', color: 'lightgreen', loc: '0 150' },
-        { key: 3, text: 'Delta', color: 'pink', loc: '150 150' }
+        { key: 3, text: 'Delta', color: 'pink', loc: '150 150' },
+        { key: 4, text: 'Suma', color: 'pink', loc: '150 150' }
       ],
       linkDataArray: [
         { key: -1, from: 0, to: 1 },
         { key: -2, from: 0, to: 2 },
-        { key: -3, from: 1, to: 1 },
-        { key: -4, from: 2, to: 3 },
-        { key: -5, from: 3, to: 0 }
+        { key: -3, from: 1, to: 3 },
+        { key: -4, from: 3, to: 4 }
       ],
       modelData: {
         canRelink: true
       },
       selectedData: null,
-      skipsDiagramUpdate: false
+      skipsDiagramUpdate: false,
+      drawerOpen: false
     };
     // init maps
     this.mapNodeKeyIdx = new Map<go.Key, number>();
@@ -61,6 +64,7 @@ class App extends React.Component<{}, AppState> {
     this.handleModelChange = this.handleModelChange.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleRelinkChange = this.handleRelinkChange.bind(this);
+    this.toggleDrawer = this.toggleDrawer.bind(this);
   }
 
   /**
@@ -109,6 +113,7 @@ class App extends React.Component<{}, AppState> {
                   draft.selectedData = ld;
                 }
               }
+              draft.drawerOpen = true;
             } else {
               draft.selectedData = null;
             }
@@ -256,6 +261,10 @@ class App extends React.Component<{}, AppState> {
     this.setState({ modelData: { canRelink: value }, skipsDiagramUpdate: false });
   }
 
+  public toggleDrawer() {
+      this.setState({drawerOpen: false});
+  }
+
   public render() {
     const selectedData = this.state.selectedData;
     let inspector;
@@ -269,13 +278,6 @@ class App extends React.Component<{}, AppState> {
     return (
       <div>
         <p>
-          Try moving around nodes, editing text, relinking, undoing (Ctrl-Z), etc. within the diagram
-          and you'll notice the changes are reflected in the inspector area. You'll also notice that changes
-          made in the inspector are reflected in the diagram. If you use the React dev tools,
-          you can inspect the React state and see it updated as changes happen.
-        </p>
-        <p>
-          Check out the <a href='https://gojs.net/latest/intro/react.html' target='_blank' rel='noopener noreferrer'>Intro page on using GoJS with React</a> for more information.
         </p>
         <DiagramWrapper
           nodeDataArray={this.state.nodeDataArray}
@@ -293,7 +295,13 @@ class App extends React.Component<{}, AppState> {
             checked={this.state.modelData.canRelink}
             onChange={this.handleRelinkChange} />
         </label>
-        {inspector}
+        <Drawer 
+          PaperProps={{ style: { width: "30%" } }}
+          anchor={"right"}
+          open={this.state.drawerOpen}
+          onClose={this.toggleDrawer}
+        >{inspector}</Drawer>
+        
       </div>
     );
   }

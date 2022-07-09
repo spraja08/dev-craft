@@ -74,7 +74,7 @@ export class DiagramWrapper extends React.Component<DiagramProps, {}> {
           'draggingTool.verticalGuidelineColor': 'blue',
           'draggingTool.centerGuidelineColor': 'green',
           'draggingTool.guidelineWidth': 1,
-          layout: $(go.ForceDirectedLayout),
+          layout: $(go.TreeLayout),
           model: $(go.GraphLinksModel,
             {
               linkKeyProperty: 'key',  // IMPORTANT! must be defined for merges and data sync when using GraphLinksModel
@@ -97,31 +97,33 @@ export class DiagramWrapper extends React.Component<DiagramProps, {}> {
 
     // define a simple Node template
     diagram.nodeTemplate =
-      $(go.Node, 'Auto',  // the Shape will go around the TextBlock
+      $(go.Node, 'Horizontal',  // the Shape will go around the TextBlock
+        { isTreeExpanded: false },
         new go.Binding('location', 'loc', go.Point.parse).makeTwoWay(go.Point.stringify),
-        $(go.Shape, 'RoundedRectangle',
+        $(go.Panel, "Auto",
+          { name: "PANEL" },
+          $(go.Shape, 'RoundedRectangle',
+            {
+              name: 'SHAPE', fill: 'white', strokeWidth: 0,
+              // set the port properties:
+              portId: '', fromLinkable: true, toLinkable: true, cursor: 'pointer'
+            },
+            // Shape.fill is bound to Node.data.color
+            new go.Binding('fill', 'color')),
+          $(go.TextBlock,
+            { margin: 8, editable: true, font: '400 .875rem Roboto, sans-serif' },  // some room around the text
+            new go.Binding('text').makeTwoWay()
+          )
+        ),
+        $("TreeExpanderButton",
           {
-            name: 'SHAPE', fill: 'white', strokeWidth: 0,
-            // set the port properties:
-            portId: '', fromLinkable: true, toLinkable: true, cursor: 'pointer'
-          },
-          // Shape.fill is bound to Node.data.color
-          new go.Binding('fill', 'color')),
-        $(go.TextBlock,
-          { margin: 8, editable: true, font: '400 .875rem Roboto, sans-serif' },  // some room around the text
-          new go.Binding('text').makeTwoWay()
-        )
-      );
-
-    // relinking depends on modelData
-    diagram.linkTemplate =
-      $(go.Link,
-        new go.Binding('relinkableFrom', 'canRelink').ofModel(),
-        new go.Binding('relinkableTo', 'canRelink').ofModel(),
-        $(go.Shape),
-        $(go.Shape, { toArrow: 'Standard' })
-      );
-
+            name: 'TREEBUTTON',
+            width: 20, height: 20,
+            alignment: go.Spot.TopRight,
+            alignmentFocus: go.Spot.Center
+          }
+        )  // end TreeExpanderButton
+      );  
     return diagram;
   }
 
