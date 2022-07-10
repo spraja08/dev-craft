@@ -8,17 +8,11 @@ import './Inspector.css';
 interface InspectorRowProps {
   id: string;
   value: string;
-  onInputChange: (key: string, value: string, isBlur: boolean) => void;
 }
 
 export class InspectorRow extends React.PureComponent<InspectorRowProps, {}> {
   constructor(props: InspectorRowProps) {
     super(props);
-    this.handleInputChange = this.handleInputChange.bind(this);
-  }
-
-  private handleInputChange(e: any) {
-    this.props.onInputChange(this.props.id, e.target.value, e.type === 'blur');
   }
 
   private formatLocation(loc: string): string {
@@ -45,8 +39,7 @@ export class InspectorRow extends React.PureComponent<InspectorRowProps, {}> {
           <input
             disabled={this.props.id === 'key'}
             value={val}
-            onChange={this.handleInputChange}
-            onBlur={this.handleInputChange}>
+          >
           </input>
         </td>
       </tr>

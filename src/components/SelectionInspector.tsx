@@ -10,7 +10,6 @@ import './Inspector.css';
 
 interface SelectionInspectorProps {
   selectedData: any;
-  onInputChange: (id: string, value: string, isBlur: boolean) => void;
 }
 
 export class SelectionInspector extends React.PureComponent<SelectionInspectorProps, {}> {
@@ -26,7 +25,7 @@ export class SelectionInspector extends React.PureComponent<SelectionInspectorPr
                     key={k}
                     id={k}
                     value={val}
-                    onInputChange={this.props.onInputChange} />;
+                  />;
       if (k === 'key') {
         dets.unshift(row); // key always at start
       } else {

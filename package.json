@@ -1,7 +1,7 @@
 {
-  "name": "gojs-react-basic",
+  "name": "DEV-CRAFT",
   "version": "1.0.1",
-  "description": "An example project demonstrating usage of GoJS and React together",
+  "description": "A Browser for the Body of Knowledge that is recommended for Craftsmen Developers",
   "private": true,
   "scripts": {
     "start": "react-scripts start",
@@ -12,7 +12,7 @@
     "react",
     "gojs"
   ],
-  "author": "Northwoods Software",
+  "author": "Raja SP",
   "dependencies": {
     "@material-ui/core": "^4.12.4",
     "@types/node": "17.0.25",
@@ -35,5 +35,10 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "browser": {
+    "fs": false,
+    "path": false,
+    "os": false
+  }
 }

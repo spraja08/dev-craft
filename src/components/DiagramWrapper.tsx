@@ -16,7 +16,6 @@ interface DiagramProps {
   modelData: go.ObjectData;
   skipsDiagramUpdate: boolean;
   onDiagramEvent: (e: go.DiagramEvent) => void;
-  onModelChange: (e: go.IncrementalData) => void;
 }
 
 export class DiagramWrapper extends React.Component<DiagramProps, {}> {
@@ -137,7 +136,6 @@ export class DiagramWrapper extends React.Component<DiagramProps, {}> {
         nodeDataArray={this.props.nodeDataArray}
         linkDataArray={this.props.linkDataArray}
         modelData={this.props.modelData}
-        onModelChange={this.props.onModelChange}
         skipsDiagramUpdate={this.props.skipsDiagramUpdate}
       />
     );
