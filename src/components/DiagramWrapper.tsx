@@ -110,7 +110,7 @@ export class DiagramWrapper extends React.Component<DiagramProps, {}> {
             // Shape.fill is bound to Node.data.color
             new go.Binding('fill', 'color')),
           $(go.TextBlock,
-            { margin: 8, editable: true, font: '400 .875rem Roboto, sans-serif' },  // some room around the text
+            { margin: 8, editable: true, font: '400 .875rem Roboto, sans-serif', stroke: "white" },  // some room around the text
             new go.Binding('text').makeTwoWay()
           )
         ),

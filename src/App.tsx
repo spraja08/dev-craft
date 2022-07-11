@@ -35,22 +35,34 @@ class App extends React.Component<{}, AppState> {
     super(props);
     this.state = {
       nodeDataArray: [
-        { key: 0, text: 'Non Functional', color: 'lightblue', loc: '0 0' },
-        { key: 1, text: 'Cost', color: 'orange', loc: '150 0' },
-        { key: 2, text: 'Operational Excellence', color: 'lightgreen', loc: '0 150' },
-        { key: 3, text: 'Reliability', color: 'pink', loc: '150 150' },
-        { key: 4, text: 'Performance', color: 'pink', loc: '150 150' },
-        { key: 5, text: 'Security', color: 'pink', loc: '150 150' },
-        { key: 6, text: 'Sustainability', color: 'pink', loc: '150 150' }
+        { key: "SUPERSTAR DEVELOPER", text: 'SUPERSTAR DEVELOPER', color: 'red', loc: '0 0' },
+        { key: "Vision Creation", text: 'Vision Creation', color: '#0080ff', loc: '0 0' },
+        { key: "Vision Execution", text: 'Vision Execution', color: '#0080ff', loc: '0 0' },
+        { key: "Building", text: 'Building', color: '#00b300', loc: '0 0' },
+
+        { key: "Non Functional", text: 'Non Functional', color: '#990099', loc: '0 0' },
+        { key: "Cost", text: 'Cost', color: '#ff00ff', loc: '150 0' },
+        { key: "Operational Excellence", text: 'Operational Excellence', color: '#ff00ff', loc: '0 150' },
+        { key: "Reliability", text: 'Reliability', color: '#ff00ff', loc: '150 150' },
+        { key: "Performance", text: 'Performance', color: '#ff00ff', loc: '150 150' },
+        { key: "Security", text: 'Security', color: '#ff00ff', loc: '150 150' },
+        { key: "Sustainability", text: 'Sustainability', color: '#ff00ff', loc: '150 150' }
 
       ],
       linkDataArray: [
-        { key: -1, from: 0, to: 1 },
-        { key: -2, from: 0, to: 2 },
-        { key: -3, from: 0, to: 3 },
-        { key: -4, from: 0, to: 4 },
-        { key: -5, from: 0, to: 5 },
-        { key: -6, from: 0, to: 6 }
+        { key: 0, from: "SUPERSTAR DEVELOPER", to: "Vision Creation" },
+        { key: 1, from: "SUPERSTAR DEVELOPER", to: "Vision Execution" },
+        { key: 2, from: "Vision Execution", to: "Building" },
+        { key: 3, from: "Building", to: "Non Functional" },
+
+        { key: 4, from: "Non Functional", to: "Cost" },
+        { key: 5, from: "Non Functional", to: "Operational Excellence" },
+        { key: 6, from: "Non Functional", to: "Operational Excellence" },
+        { key: 7, from: "Non Functional", to: "Reliability" },
+        { key: 8, from: "Non Functional", to: "Performance" },
+        { key: 9, from: "Non Functional", to: "Security" },
+        { key: 10, from: "Non Functional", to: "Sustainability" },
+
       ],
       modelData: {
         canRelink: true
