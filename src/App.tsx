@@ -70,13 +70,6 @@ class App extends React.Component<{}, AppState> {
   }
 
   private readMetaData(): void {
-    const fs = require("fs");
-    const dir = '../docs';
-    const files = fs.readdirSync(dir);
-
-    for (const file of files) {
-      console.log(file)
-    }
   }
   /**
    * Update map of node keys to their index in the array.

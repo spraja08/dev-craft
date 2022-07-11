@@ -22,6 +22,7 @@
     "gojs": "^2.2.11",
     "gojs-react": "^1.1.1",
     "immer": "^9.0.12",
+    "mui-markdown": "^0.5.4",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-scripts": "^5.0.1",

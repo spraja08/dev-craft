@@ -3,14 +3,13 @@
 */
 
 import React, { useState } from 'react'
+import MuiMarkdown from 'mui-markdown';
 
 import './Inspector.css';
 
-function request<TResponse>(
-    url: string
-): Promise<TResponse> {
-    alert( url );
-    return fetch(url, { mode: 'no-cors'})
+  
+function request<TResponse>(url: string): Promise<TResponse> {
+    return fetch(url)
         .then((response) => response.json())
         .then((data) => data as TResponse);
 }
@@ -19,16 +18,16 @@ function request<TResponse>(
 export const SelectionView = (selectedData: any) => {
     const [metaData, setMetaData] = useState<string>("");
     const node = selectedData["selectedData"]["text"];
-    const fileName = "https://github.com/spraja08/dev-craft/blob/master/docs/" + node + ".md"
+    const url = "http://127.0.0.1:5000/metadata/" + node;
 
-    request<string>(fileName).then(content => {
-        alert( content );
-        setMetaData(content);
+    request<string>(url).then(content => {
+        const jsonval = JSON.parse(content)
+        setMetaData(jsonval.result);
     })
 
     return (
         <div id='myInspectorDiv' className='inspector'>
-            {metaData}
+            <MuiMarkdown>{metaData}</MuiMarkdown>
         </div>
     );
 };
