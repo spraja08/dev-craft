@@ -1,7 +1,3 @@
-/*
-*  Copyright (C) 1998-2022 by Northwoods Software Corporation. All Rights Reserved.
-*/
-
 import * as go from 'gojs';
 import { ReactDiagram } from 'gojs-react';
 import * as React from 'react';

@@ -1,7 +1,3 @@
-/*
-*  Copyright (C) 1998-2022 by Northwoods Software Corporation. All Rights Reserved.
-*/
-
 import * as go from 'gojs';
 import { produce } from 'immer';
 import * as React from 'react';
@@ -67,10 +63,10 @@ class App extends React.Component<{}, AppState> {
         { key: "Data Modelling", text: 'Data Modelling', color: '#ff3377', loc: '0 0' },
         { key: "Decision Records", text: 'Decision Records', color: '#ff3377', loc: '0 0' },
 
-        { key: "Working Backwards", text: 'Working Backwards', color: '#33cccc', loc: '0 0' },
-        { key: "Stakeholder Management", text: 'Stakeholder Management', color: '#33cccc', loc: '0 0' },
-        { key: "Ideation Mental Models", text: 'Ideation  Mental Models', color: '#33cccc', loc: '0 0' },
-        { key: "Building Narratives", text: 'Building Narratives', color: '#33cccc', loc: '0 0' },
+        { key: "Working Backwards", text: 'Working Backwards', color: '#cc00cc', loc: '0 0' },
+        { key: "Stakeholder Management", text: 'Stakeholder Management', color: '#cc00cc', loc: '0 0' },
+        { key: "Ideation Mental Models", text: 'Ideation  Mental Models', color: '#cc00cc', loc: '0 0' },
+        { key: "Building Narratives", text: 'Building Narratives', color: '#cc00cc', loc: '0 0' },
 
         { key: "Full Stack Proficiency", text: 'Full Stack Proficiency', color: '#ff9933', loc: '0 0' },
 
@@ -323,7 +319,7 @@ class App extends React.Component<{}, AppState> {
           onDiagramEvent={this.handleDiagramEvent}
         />
         <Drawer 
-          PaperProps={{ style: { width: "30%" } }}
+          PaperProps={{ style: { width: "50%" } }}
           anchor={"right"}
           open={this.state.drawerOpen}
           onClose={this.toggleDrawer}>
